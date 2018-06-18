@@ -3,7 +3,12 @@
 Sistema de Eventos encomendados pela Morena
 
 [![Build Status](https://travis-ci.org/eliezerfb/wttd.svg?branch=master)](https://travis-ci.org/eliezerfb/wttd)
+
 [![Code Health](https://landscape.io/github/eliezerfb/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/eliezerfb/wttd/master)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/095595b9e2ea7ac3c515/maintainability)](https://codeclimate.com/github/eliezerfb/wttd/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/095595b9e2ea7ac3c515/test_coverage)](https://codeclimate.com/github/eliezerfb/wttd/test_coverage)
 
 ## Como desenvolver
 
