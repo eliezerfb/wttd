@@ -2,6 +2,9 @@
 
 Sistema de Eventos encomendados pela Morena
 
+[![Build Status](https://travis-ci.org/eliezerfb/wttd.svg?branch=master)](https://travis-ci.org/eliezerfb/wttd)
+[![Code Health](https://landscape.io/github/eliezerfb/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/eliezerfb/wttd/master)
+
 ## Como desenvolver
 
 1. Clone o repositorio
