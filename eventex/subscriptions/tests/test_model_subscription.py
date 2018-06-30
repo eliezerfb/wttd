@@ -1,7 +1,7 @@
 from datetime import datetime
-
 from django.test import TestCase
 from eventex.subscriptions.models import Subscription
+import uuid
 
 class SubscriptionModelTest(TestCase):
     def setUp(self):

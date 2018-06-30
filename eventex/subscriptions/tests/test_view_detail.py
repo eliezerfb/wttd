@@ -9,7 +9,7 @@ class SubscriptionDetailGet(TestCase):
             cpf='12345678901',
             email='eliezerfb@gmail.com',
             phone='49-984020730')
-        self.resp = self.client.get('/inscricao/{}/'.format(self.obj.pk))
+        self.resp = self.client.get('/inscricao/{}/'.format(self.obj.hash_id))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -31,5 +31,5 @@ class SubscriptionDetailGet(TestCase):
 
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):
-        resp = self.client.get('/inscricao/0/')
+        resp = self.client.get('/inscricao/123/')
         self.assertEqual(404, resp.status_code)

@@ -14,7 +14,8 @@ class SubscribeGet(TestCase):
 
     def test_template(self):
         """Must use subscriptions/subscriptions.html"""
-        self.assertTemplateUsed(self.resp, 'subscriptions/subscription_form.html')
+        self.assertTemplateUsed(self.resp,
+                              'subscriptions/subscription_form.html')
 
     def test_html(self):
         """Html must contain input tags"""
@@ -42,10 +43,12 @@ class SubscribePostValid(TestCase):
         data = dict(name='Eliézer Bourchardt', cpf='12345678910',
                     email='eliezerfb@gmail.com', phone='49-98402-0730')
         self.resp = self.client.post('/inscricao/', data)
+        self.hash_id = Subscription.objects.first().hash_id
 
     def test_post(self):
-        """Valid POST should redirect to /inscricao/1/"""
-        self.assertRedirects(self.resp, '/inscricao/1/')
+        """Valid POST should redirect to /inscricao/hash_id/"""
+        self.assertRedirects(self.resp,
+                             '/inscricao/{}/'.format(self.hash_id))
 
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
@@ -63,7 +66,8 @@ class SubscribePostInvalid(TestCase):
         self.assertEqual(200, self.resp.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(self.resp, 'subscriptions/subscription_form.html')
+        self.assertTemplateUsed(self.resp,
+                                'subscriptions/subscription_form.html')
 
     def test_has_form(self):
         form = self.resp.context['form']
