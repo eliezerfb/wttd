@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
 from eventex.subscriptions.forms import SubscriptionForm
 
 
@@ -28,6 +29,30 @@ class SubscriptionFormTest(TestCase):
         self.assertEqual('Eliézer Bourchardt', form.cleaned_data['name'])
 
 
+    def test_email_is_optional(self):
+        """E-mail is optional"""
+        form = self.make_validate_form(email='')
+        self.assertFalse(form.errors)
+
+
+    def test_phone_is_optional(self):
+        """Phone is optional"""
+        form = self.make_validate_form(phone='')
+        self.assertFalse(form.errors)
+
+
+    def test_must_inform_email_or_phone(self):
+        """Email and phone are optional, but one must be informed"""
+        form = self.make_validate_form(email='', phone='')
+        self.assertListEqual(['__all__'], list(form.errors))
+
+
+    def test_without_phone_and_invalid_email(self):
+        """Email and phone are optional, but one must be informed"""
+        form = self.make_validate_form(email='xpto', phone='')
+        self.assertListEqual(['email', '__all__'], list(form.errors))
+
+
     def assertFormErrorCode(self, form, field, code):
         errors = form.errors.as_data()
         errors_list = errors[field]
@@ -42,3 +67,11 @@ class SubscriptionFormTest(TestCase):
         form = SubscriptionForm(data)
         form.is_valid()
         return form
+
+
+class TemplateRegressionTest(TestCase):
+    def test_template_has_non_fields_errors(self):
+        invalid_data = dict(name="Eliézer Bourchardt", cpf="12345678901")
+        response = self.client.post(r('subscriptions:new'), invalid_data)
+
+        self.assertContains(response, '<ul class="errorlist nonfield">')
