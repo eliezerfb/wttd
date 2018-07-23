@@ -50,8 +50,7 @@ class SubscriptionFormTest(TestCase):
     def test_without_phone_and_invalid_email(self):
         """Email and phone are optional, but one must be informed"""
         form = self.make_validate_form(email='xpto', phone='')
-        self.assertListEqual(sorted(['__all__', 'email']),
-                             sorted(list(form.errors)))
+        self.assertListEqual(['__all__', 'email'], list(form.errors))
 
 
     def assertFormErrorCode(self, form, field, code):
