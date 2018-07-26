@@ -12,9 +12,7 @@ class SubscriptionDetailGet(TestCase):
             cpf='12345678901',
             email='eliezerfb@gmail.com',
             phone='49-984020730')
-        self.resp = self.client.get(r('subscriptions:detail',
-                                      self.obj.hash_id))
-#        self.resp = self.client.get('/inscricao/{}/'.format(self.obj.hash_id))
+        self.resp = self.client.get(r('subscriptions:detail', 1))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -36,5 +34,5 @@ class SubscriptionDetailGet(TestCase):
 
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):
-        resp = self.client.get(r('subscriptions:detail', uuid.uuid4()))
+        resp = self.client.get(r('subscriptions:detail', 0))
         self.assertEqual(404, resp.status_code)

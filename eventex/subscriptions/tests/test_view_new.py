@@ -44,12 +44,11 @@ class SubscriptionsNewPostValid(TestCase):
         data = dict(name='Eliézer Bourchardt', cpf='12345678910',
                     email='eliezerfb@gmail.com', phone='49-98402-0730')
         self.resp = self.client.post(r('subscriptions:new'), data)
-        self.hash_id = Subscription.objects.first().hash_id
 
     def test_post(self):
-        """Valid POST should redirect to /inscricao/hash_id/"""
+        """Valid POST should redirect to /inscricao/1/"""
         self.assertRedirects(self.resp,
-                             r('subscriptions:detail', self.hash_id))
+                             r('subscriptions:detail', 1))
 
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
