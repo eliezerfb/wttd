@@ -1,10 +1,7 @@
 from django.conf import settings
-from django.contrib import messages
 from django.core import mail
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, resolve_url as r
 from django.template.loader import render_to_string
-from django.views.generic import DetailView, View, CreateView
+from django.views.generic import CreateView
 
 
 class EmailCreateMixin:
@@ -31,7 +28,6 @@ class EmailCreateMixin:
 
         meta = self.object._meta
         return '{}/{}_email.txt'.format(meta.app_label, meta.model_name)
-
 
     def get_email_context_data(self, **kwargs):
         context = dict(kwargs)

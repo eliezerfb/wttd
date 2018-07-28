@@ -1,7 +1,7 @@
-from django.test import TestCase
-from django.shortcuts import resolve_url as r
 import uuid
 
+from django.shortcuts import resolve_url as r
+from django.test import TestCase
 from eventex.subscriptions.models import Subscription
 
 
