@@ -43,3 +43,5 @@ heroku config:set DEBUG=False
 
 git push heroku master --force
 ```
+
+:)

@@ -1,12 +1,15 @@
 import uuid
 from django.db import models
+from django.shortcuts import resolve_url as r
+from eventex.subscriptions.validators import validate_cpf
+
 
 
 class Subscription(models.Model):
     name = models.CharField('nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11)
-    email = models.EmailField('e-mail')
-    phone = models.CharField('telefone', max_length=20)
+    cpf = models.CharField('CPF', max_length=11, validators=[validate_cpf])
+    email = models.EmailField('e-mail', blank=True)
+    phone = models.CharField('telefone', blank=True, max_length=20)
     created_at = models.DateTimeField('criado em', auto_now_add=True)
     hash_id = models.UUIDField(default=uuid.uuid4, editable=False)
     paid = models.BooleanField('pago', default=False)
@@ -18,3 +21,6 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return r('subscriptions:detail', self.pk)
