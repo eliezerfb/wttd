@@ -5,7 +5,6 @@ from eventex.subscriptions.models import Subscription
 from eventex.subscriptions.validators import validate_cpf
 
 
-
 class SubscriptionFormOld(forms.Form):
     name = forms.CharField(label='Nome')
     cpf = forms.CharField(label='CPF', validators=[validate_cpf])
@@ -18,6 +17,7 @@ class SubscriptionFormOld(forms.Form):
     def clean(self):
         if not self.cleaned_data.get('email') and not self.cleaned_data.get('phone'):
             raise ValidationError('Informe seu e-mail ou telefone.')
+
 
 class SubscriptionForm(forms.ModelForm):
     class Meta:

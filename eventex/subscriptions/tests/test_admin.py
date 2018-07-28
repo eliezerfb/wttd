@@ -3,7 +3,6 @@ from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, ad
 from unittest.mock import Mock
 
 
-
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
         Subscription.objects.create(name='Eliézer Bourchardt',
@@ -11,7 +10,6 @@ class SubscriptionModelAdminTest(TestCase):
                                     email='eliezerfb@gmail.com',
                                     phone='49984020730')
         self.model_admin = SubscriptionModelAdmin(Subscription, admin.site)
-
 
     def test_has_action(self):
         """Action mark_as_paid should be installed"""
@@ -23,7 +21,6 @@ class SubscriptionModelAdminTest(TestCase):
 
         self.assertEqual(1, Subscription.objects.filter(paid=True).count())
 
-
     def test_message(self):
         """It should send a message to the user"""
         queryset = Subscription.objects.all()
@@ -31,7 +28,6 @@ class SubscriptionModelAdminTest(TestCase):
         mock = self.call_action()
 
         mock.assert_called_once_with(None, '1 inscrição foi marcada como paga.')
-
 
     def call_action(self):
         queryset = Subscription.objects.all()
