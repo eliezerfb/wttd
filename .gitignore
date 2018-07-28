@@ -4,9 +4,6 @@ __pycache__
 *.pyc
 staticfiles/
 .ipynb_checkpoints/
-<<<<<<< HEAD
 .idea/
 .vscode/
-=======
 /.vs
->>>>>>> 8a21a8c9175f4a56ebfca02b8b3b16584d6f3e59
