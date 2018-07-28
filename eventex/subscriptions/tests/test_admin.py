@@ -1,6 +1,8 @@
-from django.test import TestCase
-from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, admin
 from unittest.mock import Mock
+
+from django.test import TestCase
+
+from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, admin
 
 
 class SubscriptionModelAdminTest(TestCase):

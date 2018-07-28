@@ -1,6 +1,7 @@
 from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
+
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 

@@ -18,7 +18,6 @@ from django.urls import path, include
 
 from eventex.core.views import home, speaker_detail, talk_list
 
-
 urlpatterns = [
     path('', home, name='home'),
     path('inscricao/', include('eventex.subscriptions.urls', namespace='subscriptions')),

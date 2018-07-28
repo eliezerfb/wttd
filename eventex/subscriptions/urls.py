@@ -1,4 +1,5 @@
 from django.urls import path
+
 from eventex.subscriptions.views import detail, new
 
 app_name = 'subscriptions'

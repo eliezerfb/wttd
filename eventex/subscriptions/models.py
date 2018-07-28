@@ -1,6 +1,8 @@
 import uuid
+
 from django.db import models
 from django.shortcuts import resolve_url as r
+
 from eventex.subscriptions.validators import validate_cpf
 
 
